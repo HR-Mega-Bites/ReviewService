@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = (props) => (
   <div className="about">
-    <h3>About Blue Apron</h3>
+    <h3 className='blueApron'>About Blue Apron</h3>
     <div className="aboutTexts">
       <img className="aboutImg" src="https://media.blueapron.com/assets/recipe-proto/ba-hero-e3e53456f4e7c275194e637656f22e5ab19e469194c2712fc7c1fc5164566fd9.jpg" alt="Ba Hero"></img>
     </div>
