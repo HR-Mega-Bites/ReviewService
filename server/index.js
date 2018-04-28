@@ -9,7 +9,7 @@ bluebird.promisifyAll(redis.Multi.prototype);
 
 
 const app = express();
-const client = redis.createClient(6379, 'localhost');
+const client = redis.createClient(6379, '172.17.0.3');
 
 app.use(cors());
 app.use(bodyparser.json());
@@ -32,8 +32,9 @@ app.get('/recipes/:id/comments', (req, res) => {
         Comments.getComments(req.params.id)
           .then((recipes) => {
             res.status(200);
+            const jsonRecipes = JSON.stringify(recipes);
             res.send(recipes);
-            client.set(req.params.id, recipes);
+            client.set(req.params.id, jsonRecipes);
           })
           .catch((err) => {
             res.status(400);

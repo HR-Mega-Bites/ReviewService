@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import renderer from 'react-test-renderer';
 import { shallow, mount, render } from 'enzyme';
-import Comment from '../client/src/components/Comment.jsx';
+import Comment from '../public/src/components/Comment.jsx';
 
 const fakeComment = {
   userImage: 'https://s3.amazonaws.com/uifaces/faces/twitter/tristanlegros/128.jp',
