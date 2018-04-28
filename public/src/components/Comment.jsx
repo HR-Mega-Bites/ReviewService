@@ -38,7 +38,7 @@ class Comment extends React.Component {
         <div>
           <button className="clickButton" onClick={() => {this.toggleLike(); {this.handleClick()}}}>{this.state.likeMsg}</button>
           <span className='period'> · </span>
-          <a href='#'>Reply</a>
+          <a className='reply'href='#'>Reply</a>
           <span className='period'> · </span>
           <span><i className="glyphicon glyphicon-thumbs-up"></i></span>
           <span className='likes'>{this.state.likes}</span>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import renderer from 'react-test-renderer';
 import { shallow, mount, render } from 'enzyme';
-import CommentList from '../client/src/components/CommentList.jsx';
+import CommentList from '../public/src/components/CommentList.jsx';
 
 const fakeComment = [
   {

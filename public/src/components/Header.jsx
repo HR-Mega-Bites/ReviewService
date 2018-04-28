@@ -3,7 +3,7 @@ import {SplitButton, MenuItem} from 'react-bootstrap'
 
 const Header = (props) => (
   <div>
-    <h3>Tips from Head Chefs</h3>
+    <h3 className='tipsFrom'>Tips from Head Chefs</h3>
       <div className="header">
         <span className="commentsLength">{props.comments.length} Comments</span>
         <span className="split">

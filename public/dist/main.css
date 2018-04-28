@@ -1,4 +1,4 @@
-textarea {
+.addComment {
   background: center center no-repeat;
   border: 1px solid #e6e6e6;; 
   resize: none;
@@ -9,7 +9,7 @@ textarea {
   margin-bottom: 24px;
 }
 
-h3 {
+.tipsFrom, .blueApron {
   margin: 10px 0 20px 0;
   font-size: 20px;
   font-weight: 600;
@@ -113,7 +113,7 @@ form {
 
 .dropdown-menu{
   min-width: 20px;
-  font-size: 40px;
+  font-size: 13px;
 }
 
 .clearLine {
@@ -233,7 +233,7 @@ form {
   
 }
 
-a {
+.reply {
   color: #4267b2;
   cursor: pointer;
   font-size: 12px;

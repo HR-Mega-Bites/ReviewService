@@ -1,7 +1,7 @@
 import { shallow, mount, render } from 'enzyme';
 import React, { Component } from 'react';
 import renderer from 'react-test-renderer';
-import App from '../client/src/components/App.jsx';
+import App from '../public/src/components/App.jsx';
 
 describe('app rendered', () => {
 
