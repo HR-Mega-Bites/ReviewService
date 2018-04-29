@@ -6,10 +6,18 @@ class AddCommentForm extends React.Component {
     super(props);
     this.state = {
       comment: '',
+      formStatus: false,
       showDiv: false,
     };
     this.updateText = this.updateText.bind(this);
     this.submit = this.submit.bind(this);
+    this.toggleForm = this.toggleForm.bind(this);
+  }
+
+  toggleForm(e) {
+    this.setState({
+      formStatus: true
+    })
   }
 
   updateText(e) {
@@ -34,16 +42,18 @@ class AddCommentForm extends React.Component {
             <textarea className="addComment" placeholder="Add a comment..." 
                       onChange={this.updateText} 
                       value={this.state.comment} 
-                      onClick={() => this.setState({ showDiv: true })}
+                      onClick={() => {this.setState({ showDiv: true }); {this.toggleForm()}}}
+                      style={{height: this.state.formStatus ? 75 : 55 }}
             />
-           {/* {showDiv && (
-            <Panel className='hello'>
-            <span className='checkbox'>
-            <Panel.Body><Checkbox/></Panel.Body>
-             </span>
-            <button className='post' type="submit">Post</button>
-            </Panel>
-          )} */}
+           {showDiv && (
+            <Panel className='postForm'>
+            <span className='checkbox'><Panel.Body><Checkbox/></Panel.Body></span>
+            <span className='postOnFb'> Also post on Facebook </span>
+            <button className='postButton' 
+                    disabled={!this.state.comment} 
+                    style={{ backgroundColor: !this.state.comment ? 365899 : '#4267b2' }}
+                    type="submit">Post</button>
+            </Panel>)}
         </form >
       </div> 
     );

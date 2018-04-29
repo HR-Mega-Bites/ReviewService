@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node server/index.js",
     "react": "webpack -p",
-    "react:p": "webpack -p --watch",
+    "react:p": "webpack -d --watch",
     "db:setup": "node database/seed.js",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -37,6 +37,7 @@
     "react": "^16.3.1",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.1",
+    "react-sort-list": "0.0.4",
     "reactstrap": "^5.0.0-beta.3",
     "redis": "^2.8.0",
     "regenerator-runtime": "^0.11.1",

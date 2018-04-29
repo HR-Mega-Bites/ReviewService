@@ -9,7 +9,9 @@ bluebird.promisifyAll(redis.Multi.prototype);
 
 
 const app = express();
-const client = redis.createClient(6379, '172.17.0.3');
+
+const client = redis.createClient(6379, 'localhost');
+// const client = redis.createClient(6379, '172.17.0.3');
 
 app.use(cors());
 app.use(bodyparser.json());

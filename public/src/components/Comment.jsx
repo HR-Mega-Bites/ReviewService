@@ -11,7 +11,6 @@ class Comment extends React.Component {
     }
   }
 
-
   toggleLike() {
     if (!this.state.likeStatus) {
       this.setState({ likes: this.state.likes + 1, likeMsg: 'Unlike' })
