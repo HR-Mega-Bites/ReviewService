@@ -51,7 +51,7 @@ class AddCommentForm extends React.Component {
               <span className='postOnFb'> Also post on Facebook </span>
               <button className='postButton' 
                     disabled={!this.state.comment} 
-                    style={{ backgroundColor: !this.state.comment ? 365899 : '#4267b2' }}
+                style={{ backgroundColor: !this.state.comment ? '#9cb4d8' : '#4267b2' }}
                     type="submit">Post</button>
             </Panel>)}
         </form >

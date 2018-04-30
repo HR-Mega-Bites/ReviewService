@@ -26,12 +26,12 @@ app.post('/recipes/:id/comments', (req, res) => {
 
 
 app.get('/recipes/:id/comments', (req, res) => {
-  // client.getAsync(req.params.id)
-  //   .then((reviews) => {
-  //     if (reviews !== null) {
-  //       res.status(200);
-  //       res.send(reviews);
-  //     } else {
+  client.getAsync(req.params.id)
+    .then((reviews) => {
+      if (reviews !== null) {
+        res.status(200);
+        res.send(reviews);
+      } else {
         Comments.getComments(req.params.id)
           .then((comments) => {
             res.status(200);
@@ -42,12 +42,12 @@ app.get('/recipes/:id/comments', (req, res) => {
           .catch((err) => {
             res.status(400).send('Failed to get comments', err);
           });
-    //   }
-    // })
-    // .catch((err) => {
-    //   res.status(400);
-    //   res.send(err);
-    // });
+      }
+    })
+    .catch((err) => {
+      res.status(400);
+      res.send(err);
+    });
 });
 
 let port = 5000;
