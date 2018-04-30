@@ -12,6 +12,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       comments: [],
+      id: 1,
     };
     this.getComments = this.getComments.bind(this);
     this.postComment = this.postComment.bind(this);
@@ -21,12 +22,11 @@ class App extends React.Component {
     const id = window.location.pathname.split('/')[2];
     if (id) {
       this.getComments(id);
-    } else {
+      this.setState({id: id})
+    } else {  
       this.getComments(1);
     }
   }
-  
-
   
   getComments(id) {
     axios.get(`http://127.0.0.1:5000/recipes/${id}/comments`)
@@ -36,8 +36,8 @@ class App extends React.Component {
   }
   
   postComment(comment) {
-    axios.post('/recipe/:id', comment)
-      .then(comment => this.getComments)
+    axios.post(`http://127.0.0.1:5000/recipes/${this.state.id}/comments`, comment)
+      .then(this.getComments(this.state.id))
       .catch(err => console.log(err) )
   }
 

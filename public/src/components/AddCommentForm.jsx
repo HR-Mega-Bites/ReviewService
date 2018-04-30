@@ -7,7 +7,7 @@ class AddCommentForm extends React.Component {
     this.state = {
       comment: '',
       formStatus: false,
-      showDiv: false,
+      showForm: false,
     };
     this.updateText = this.updateText.bind(this);
     this.submit = this.submit.bind(this);
@@ -34,22 +34,22 @@ class AddCommentForm extends React.Component {
   }
 
   render() {
-    const { showDiv } = this.state;
+    const { showForm } = this.state;
     return (
       <div>
         <form onSubmit={this.submit}>
-          <img id="userPic" src="https://scontent.fsnc1-1.fna.fbcdn.net/v/t1.0-1/c0.0.342.342/10401990_10202284489580545_4866479589637870884_n.jpg?_nc_cat=0&oh=1447b3389d760e727197876f958f604f&oe=5B5D1B2A" alt=""></img>
+          <img id="userPic" src="https://avatars3.githubusercontent.com/u/33105110?s=400&u=473e3ba3a54d0fbef2b048a54d7810b5629356ea&v=4" alt=""></img>
             <textarea className="addComment" placeholder="Add a comment..." 
                       onChange={this.updateText} 
                       value={this.state.comment} 
-                      onClick={() => {this.setState({ showDiv: true }); {this.toggleForm()}}}
-                      style={{height: this.state.formStatus ? 75 : 55 }}
+                      onClick={() => {this.setState({ showForm: true }); {this.toggleForm()}}}
+                      style={{ height: this.state.formStatus ? 75 : 55, marginBottom: this.state.formStatus ? 0 : 24}}
             />
-           {showDiv && (
+           {showForm && (
             <Panel className='postForm'>
-            <span className='checkbox'><Panel.Body><Checkbox/></Panel.Body></span>
-            <span className='postOnFb'> Also post on Facebook </span>
-            <button className='postButton' 
+              <span className='checkbox'><Panel.Body><Checkbox/></Panel.Body></span>
+              <span className='postOnFb'> Also post on Facebook </span>
+              <button className='postButton' 
                     disabled={!this.state.comment} 
                     style={{ backgroundColor: !this.state.comment ? 365899 : '#4267b2' }}
                     type="submit">Post</button>

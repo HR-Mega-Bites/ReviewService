@@ -1,3 +1,16 @@
+/* AddCommentForm.jsx */
+
+#userPic {
+  height: 48px;
+  width: 48px;
+  border: 0;
+  display: block;
+  color: #365899;
+  cursor: pointer;
+  float: left;
+  margin-right: 8px;
+}
+
 .addComment {
   background: center center no-repeat;
   border: 1px solid #e6e6e6;; 
@@ -6,22 +19,13 @@
   padding-right: 8px;
   width: 477px;
   height: 55px;
-  /* margin-bottom: 24px; */
-}
-
-.tipsFrom, .blueApron {
-  margin: 10px 0 20px 0;
-  font-size: 20px;
-  font-weight: 600;
-  color: #0f346C;
+  margin-bottom: 24px;
 }
 
 form {
   padding-left: 8px;
   padding-right: 8px;
 }
-
-/* Header.jsx */
 
 .panel-body {
   float: left;
@@ -75,9 +79,17 @@ form {
   border: 1px solid #d3d6db;
   background-color: #f6f7f9;
   resize: none;
-  /* background: transparent; */
   border-radius: 0px;
 }
+/* Header.jsx */
+
+.tipsFrom, .blueApron {
+  margin: 10px 0 20px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #0f346C;
+}
+
 
 .header {
   padding-left: 8px;
@@ -177,6 +189,7 @@ form {
   font-family: Helvetica, Arial, sans-serif
 }
 
+
 .aboutTexts {
   margin-bottom: 20px;
 }
@@ -197,7 +210,7 @@ form {
 .comments {
   padding-left: 8px;
   padding-right: 8px;
-  margin-top: 24px;
+  /* margin-top: 24px; */
 }
 
 .userImage {
@@ -284,17 +297,4 @@ form {
   cursor: pointer;
   text-decoration: none;
   font-family: Helvetica, Arial, sans-serif;
-}
-
-/* AddCommentForm.jsx */
-
-#userPic {
-  height: 48px;
-  width: 48px;
-  border: 0;
-  display: block;
-  color: #365899;
-  cursor: pointer;
-  float: left;
-  margin-right: 8px;
 }
