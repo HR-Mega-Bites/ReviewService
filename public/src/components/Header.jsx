@@ -38,9 +38,9 @@ class Header extends React.Component {
             <span className="commentsLength">{this.props.comments.length} Comments</span>
             <span className="split">
             <SplitButton className="top" title={this.state.dropdownVal} pullRight id="split-button-pull-right">
-              <MenuItem onClick={() => {this.updateTop(); {this.props.sortByDate(false)}}} eventKey="1">{this.state.dropdownList[0]}</MenuItem>
-              <MenuItem onClick={() => {this.updateNewest(); { this.props.sortByDate(false) } }} eventKey="2">{this.state.dropdownList[1]}</MenuItem>
-              <MenuItem onClick={() => {this.updateOldest(); { this.props.sortByDate(true) } }} eventKey="3">{this.state.dropdownList[2]}</MenuItem>
+              <MenuItem onClick={() => {this.updateTop(); {this.props.sortByDateAscend()}}} eventKey="1">{this.state.dropdownList[0]}</MenuItem>
+              <MenuItem onClick={() => {this.updateNewest(); { this.props.sortByDateAscend() } }} eventKey="2">{this.state.dropdownList[1]}</MenuItem>
+              <MenuItem onClick={() => {this.updateOldest(); { this.props.sortByDateDescend() } }} eventKey="3">{this.state.dropdownList[2]}</MenuItem>
             </SplitButton>
             </span> 
             <span className="sortBy">Sort by</span>

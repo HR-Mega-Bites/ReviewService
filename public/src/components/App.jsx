@@ -18,7 +18,8 @@ class App extends React.Component {
     };
     this.getComments = this.getComments.bind(this);
     this.postComment = this.postComment.bind(this);
-    this.sortByDate = this.sortByDate.bind(this);
+    this.sortByDateAscend = this.sortByDateAscend.bind(this);
+    this.sortByDateDescend = this.sortByDateDescend.bind(this);
   }
 
   componentDidMount() {
@@ -31,22 +32,20 @@ class App extends React.Component {
     }
   }
   
-  sortByDate(sort) {
-    if (this.state.sortStatus === false) {
+  sortByDateAscend() {
       this.setState({
-        comments: _.sortBy(this.state.comments, function (comment) {
+        comments: _.sortBy(this.state.comments, (comment) => {
           return - (new Date(comment.created_At));
-        }),
-        sortStatus: sort,
-      })
-    } else {
-      this.setState({
-        comments: _.sortBy(this.state.comments, function (comment) {
-          return + (new Date(comment.created_At));
-        }),
-        sortStatus: sort,
+        })
       })
     }
+
+  sortByDateDescend(){
+    this.setState({
+      comments: _.sortBy(this.state.comments, (comment) => {
+        return + (new Date(comment.created_At));
+      })
+    })
   }
 
   getComments(id) {
@@ -71,7 +70,7 @@ class App extends React.Component {
       <div className="app">
         <section className="section">
           <div className="tips">
-            <Header comments={this.state.comments} sortByDate={this.sortByDate}/>
+            <Header comments={this.state.comments} sortByDateAscend={this.sortByDateAscend} sortByDateDescend={this.sortByDateDescend}/>
             <AddCommentForm postComment={this.postComment}/>
             <CommentList comments={this.state.comments} />
           </div>
