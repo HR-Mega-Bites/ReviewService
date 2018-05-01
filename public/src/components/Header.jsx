@@ -43,7 +43,7 @@ class Header extends React.Component {
               <MenuItem onClick={() => {this.updateOldest(); { this.props.sortByDateDescend() } }} eventKey="3">{this.state.dropdownList[2]}</MenuItem>
             </SplitButton>
             </span> 
-            <span className="sortBy">Sort by</span>
+            <span className="sortBy">Sort by</span>   
             <div className="clearLine"></div>
           </div>
       </div>

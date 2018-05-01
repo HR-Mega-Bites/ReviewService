@@ -52,13 +52,12 @@ class App extends React.Component {
   getComments(id) {
     // axios.get(`http://ec2-18-222-40-189.us-east-2.compute.amazonaws.com/recipes/${id}/comments`)
     axios.get(`/recipes/${id}/comments`)
-    // .then(comment => {this.setState({comments: comment.data[0].comments})})
-    .then(comment => { this.setState({ 
-      comments: _.sortBy(comment.data[0].comments, (data) => {
-        return - (new Date(data.created_At));
-      })
-    }) 
-  })
+      .then(comment => { this.setState({ 
+        comments: _.sortBy(comment.data[0].comments, (data) => {
+          return - (new Date(data.created_At));
+        })
+      }) 
+    })
     .catch(err => console.log(err))
   }
   
@@ -71,7 +70,7 @@ class App extends React.Component {
 
   deleteComment(name) {
     axios.delete(`/recipes/${this.state.id}/comments`, name)
-      // axios.post(`http://ec2-18-222-40-189.us-east-2.compute.amazonaws.com/recipes/${this.state.id}/comments`, comment)
+
       .then(() => this.getComments(this.state.id))
       .catch(err => console.log(err))
   }
