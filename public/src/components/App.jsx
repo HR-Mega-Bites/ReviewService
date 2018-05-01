@@ -13,11 +13,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       comments: [],
+      sortStatus: false,
       id: 1,
     };
     this.getComments = this.getComments.bind(this);
     this.postComment = this.postComment.bind(this);
-    this.sortByName = this.sortByName.bind(this);
+    this.sortByDate = this.sortByDate.bind(this);
   }
 
   componentDidMount() {
@@ -30,12 +31,22 @@ class App extends React.Component {
     }
   }
   
-  sortByName() {
-    this.setState({
-      comments: _.sortBy(this.state.comments, function (node) {
-        return - (new Date(node.created_At))
+  sortByDate(sort) {
+    if (this.state.sortStatus === false) {
+      this.setState({
+        comments: _.sortBy(this.state.comments, function (comment) {
+          return - (new Date(comment.created_At));
+        }),
+        sortStatus: sort,
       })
-    })
+    } else {
+      this.setState({
+        comments: _.sortBy(this.state.comments, function (comment) {
+          return + (new Date(comment.created_At));
+        }),
+        sortStatus: sort,
+      })
+    }
   }
 
   getComments(id) {
@@ -43,7 +54,7 @@ class App extends React.Component {
     axios.get(`http://127.0.0.1:5000/recipes/${id}/comments`)
     // axios.get(`http://ec2-18-222-40-189.us-east-2.compute.amazonaws.com/recipes/${id}/comments`)
     // .then(comment => {console.log(comment);console.log(comment.data[0].comments)})
-    .then(comment => {this.setState({comments: comment.data[0].comments}); console.log(this.state.comments)})
+    .then(comment => {this.setState({comments: comment.data[0].comments})})
     .catch(err => console.log(err))
   }
   
@@ -60,7 +71,7 @@ class App extends React.Component {
       <div className="app">
         <section className="section">
           <div className="tips">
-            <Header comments={this.state.comments} sortByName={this.sortByName}/>
+            <Header comments={this.state.comments} sortByDate={this.sortByDate}/>
             <AddCommentForm postComment={this.postComment}/>
             <CommentList comments={this.state.comments} />
           </div>
