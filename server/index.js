@@ -24,6 +24,13 @@ app.post('/recipes/:id/comments', (req, res) => {
     .catch((err) => { res.status(400).send(err); });
 })
 
+app.delete('/recipes/:id/comments', (req, res) => {
+  console.log(req.body)
+  Comments.deleteComments(req.params.id, req.body.comment)
+    .then(() => { res.status(201).send('Successfully deleted') })
+    .catch((err) => { res.status(400).send(err); });
+})
+
 app.get('/recipes/:id/comments', (req, res) => {
   // client.getAsync(req.params.id)
   //   .then((reviews) => {

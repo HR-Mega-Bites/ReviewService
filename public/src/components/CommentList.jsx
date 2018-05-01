@@ -2,6 +2,7 @@ import React from 'react';
 import Comment from './Comment.jsx';
 import AddCommentForm from './AddCommentForm.jsx';
 import App from './App.jsx'
+import _ from 'lodash'
 
 const CommentList = (props) => (
   <div>

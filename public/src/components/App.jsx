@@ -18,6 +18,7 @@ class App extends React.Component {
     };
     this.getComments = this.getComments.bind(this);
     this.postComment = this.postComment.bind(this);
+    this.deleteComment = this.deleteComment.bind(this);
     this.sortByDateAscend = this.sortByDateAscend.bind(this);
     this.sortByDateDescend = this.sortByDateDescend.bind(this);
   }
@@ -44,25 +45,35 @@ class App extends React.Component {
     this.setState({
       comments: _.sortBy(this.state.comments, (comment) => {
         return + (new Date(comment.created_At));
-      })
+      })  
     })
   }
 
   getComments(id) {
-
-    axios.get(`http://127.0.0.1:5000/recipes/${id}/comments`)
     // axios.get(`http://ec2-18-222-40-189.us-east-2.compute.amazonaws.com/recipes/${id}/comments`)
-    // .then(comment => {console.log(comment);console.log(comment.data[0].comments)})
-    .then(comment => {this.setState({comments: comment.data[0].comments})})
+    axios.get(`/recipes/${id}/comments`)
+    // .then(comment => {this.setState({comments: comment.data[0].comments})})
+    .then(comment => { this.setState({ 
+      comments: _.sortBy(comment.data[0].comments, (data) => {
+        return - (new Date(data.created_At));
+      })
+    }) 
+  })
     .catch(err => console.log(err))
   }
   
   postComment(comment) {
-
-    // axios.post(`http:ec2-18-222-40-189.us-east-2.compute.amazonaws.com/recipes/${this.state.id}/comments`, comment)
-    axios.post(`http://127.0.0.1:5000/recipes/${this.state.id}/comments`, comment)
+    axios.post(`/recipes/${this.state.id}/comments`, comment)
+    // axios.post(`http://ec2-18-222-40-189.us-east-2.compute.amazonaws.com/recipes/${this.state.id}/comments`, comment)
       .then(() => this.getComments(this.state.id))
       .catch(err => console.log(err) )
+  }
+
+  deleteComment(name) {
+    axios.delete(`/recipes/${this.state.id}/comments`, name)
+      // axios.post(`http://ec2-18-222-40-189.us-east-2.compute.amazonaws.com/recipes/${this.state.id}/comments`, comment)
+      .then(() => this.getComments(this.state.id))
+      .catch(err => console.log(err))
   }
 
   render() {

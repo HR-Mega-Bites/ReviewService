@@ -29,5 +29,21 @@ const postComments = (recipeID, text) => {
   });
 };
 
+const deleteComments = (recipeID, name) => {
+  return new Promise((resolve, reject) => {
+    db.Comments.update(
+      { id: recipeID },
+      { $pull: {
+        comments: {
+          fullName: name,
+        },
+      } },
+    )
+      .then((results) => { resolve(results); })
+      .catch((err) => { reject(err); });
+  });
+};
+
+module.exports.deleteComments = deleteComments;
 module.exports.getComments = getComments;
 module.exports.postComments = postComments;
